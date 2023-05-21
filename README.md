@@ -1,5 +1,5 @@
 # Tugas-Database-Tokopedia
-Tugas 3 - kelompok Basis Data
+Tugas 3 - Implementasi Desain Basis Data
 
 Dalam folder ini, terdapat 2 file:
 1. tokopedia.sql
@@ -18,7 +18,6 @@ Hanya bisa memilih satu file untuk digunakan. Berikut cara-caranya:
 ## Untuk File "tokopedia-insert-manual.txt"
 
 1. Masuk ke MariaDB.
-2. Membuat database baru (saran nama tokopedia).
-3. Buka filenya, pilih semua (ctrl + A).
-4. Paste di MariaDB, terakhir ENTER.
-5. Selesai.
+2. Buka filenya, pilih semua (ctrl + A).
+3. Paste di MariaDB, terakhir ENTER.
+4. Selesai. Temukan file log di C:\
