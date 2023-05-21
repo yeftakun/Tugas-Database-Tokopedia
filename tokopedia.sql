@@ -43,35 +43,30 @@ LOCK TABLES `detail_transaksi` WRITE;
 /*!40000 ALTER TABLE `detail_transaksi` DISABLE KEYS */;
 INSERT INTO `detail_transaksi` VALUES
 (1,1,1,1),
-(2,2,3,2),
-(3,2,7,1),
-(4,3,12,1),
-(5,4,6,1),
-(6,4,11,1),
-(7,4,13,3),
-(8,5,2,1),
-(9,6,6,2),
-(10,7,8,2),
-(11,8,5,1),
-(12,9,10,1),
-(13,9,15,1),
-(14,10,9,1),
-(15,11,4,1),
-(16,12,2,1),
-(17,13,3,2),
-(18,14,14,1),
-(19,15,15,1),
-(20,15,3,1),
-(21,16,7,1),
-(22,17,11,1),
-(23,18,13,1),
-(24,18,8,1),
-(25,19,9,1),
-(26,20,2,1),
-(27,20,4,1),
-(28,20,10,1),
-(29,20,12,1),
-(30,20,14,1);
+(2,1,11,1),
+(3,2,3,2),
+(4,2,13,1),
+(5,3,8,2),
+(6,3,15,1),
+(7,4,6,1),
+(8,4,7,1),
+(9,5,1,1),
+(10,5,9,2),
+(11,6,3,5),
+(12,6,8,2),
+(13,6,7,1),
+(14,7,13,3),
+(15,8,13,2),
+(16,8,8,4),
+(17,9,14,1),
+(18,10,1,1),
+(19,11,2,1),
+(20,11,12,1),
+(21,11,4,1),
+(22,12,6,1),
+(23,13,14,1),
+(24,14,1,1),
+(25,15,11,1);
 /*!40000 ALTER TABLE `detail_transaksi` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -221,16 +216,16 @@ DROP TABLE IF EXISTS `rating`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `rating` (
   `rating_id` int(11) NOT NULL,
-  `transaksi_id` int(11) DEFAULT NULL,
+  `detail_transaksi_id` int(11) DEFAULT NULL,
   `produk_id` int(11) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   `komentar` varchar(300) DEFAULT NULL,
   `poin` int(11) DEFAULT NULL,
   PRIMARY KEY (`rating_id`),
-  KEY `idx_rating_transaksi_id` (`transaksi_id`),
+  KEY `idx_rating_detail_transaksi_id` (`detail_transaksi_id`),
   KEY `idx_rating_produk_id` (`produk_id`),
   KEY `idx_rating_user_id` (`user_id`),
-  CONSTRAINT `rating_ibfk_1` FOREIGN KEY (`transaksi_id`) REFERENCES `transaksi` (`transaksi_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `rating_ibfk_1` FOREIGN KEY (`detail_transaksi_id`) REFERENCES `detail_transaksi` (`detail_transaksi_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `rating_ibfk_2` FOREIGN KEY (`produk_id`) REFERENCES `produk` (`produk_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `rating_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
@@ -244,15 +239,30 @@ LOCK TABLES `rating` WRITE;
 /*!40000 ALTER TABLE `rating` DISABLE KEYS */;
 INSERT INTO `rating` VALUES
 (1,1,1,2,'Produk bagus, pengiriman cepat!',5),
-(2,2,3,4,'Snacknya enak banget!',4),
-(3,5,8,7,'Kue lapisnya lezat dan legit',5),
-(4,7,6,5,'Laptopnya keren banget!',5),
-(5,9,10,3,'Buku panduan fotografinya sangat membantu',4),
-(6,11,4,6,'Sepatunya nyaman dipakai untuk lari',4),
-(7,14,14,1,'Treadmillnya bagus kualitasnya',5),
-(8,16,15,8,'Bukunya sangat inspiratif',5),
-(9,19,9,2,'Raketnya bagus untuk bermain bulutangkis',4),
-(10,20,2,3,'Dressnya cantik dan nyaman',5);
+(2,2,11,2,'Sudah di test, kualitas sesuai harga',5),
+(3,3,3,1,'Enak min, mantappu jiwa!!!',5),
+(4,4,13,1,'Coklatnya enak',5),
+(5,5,8,3,'Lapis legitnya enak sih, tapi pengiriman lambat:(',2),
+(6,6,15,3,'Bukunya bagus, aku akan merekomendasikan ke temanku tentang buku ini',4),
+(7,7,6,2,'Baru nyoba migrasi ke ekosistem apple, ternyata enak juga',5),
+(8,8,7,2,'Sesuai ekspektasi',5),
+(9,9,1,5,'Hpnya bagus, saya cuman iseng aja:v',1),
+(10,10,9,5,'Saya beli 2 kenaoa cuman datang 1',1),
+(11,11,3,4,'Pengirimannya lama:(',4),
+(12,12,8,4,'Kuenya enak',5),
+(13,13,7,4,'Tasnya bagus, kualitas mantap',4),
+(14,14,13,6,'Coklat!!! Coklat!!!',5),
+(15,15,13,6,'Untuk rasanya enak! Tapi pengiriman lambat',3),
+(16,16,8,6,'Lapis Legitnya enak, mantap',4),
+(17,17,14,7,'Alatnya berfungsi dengan baik',5),
+(18,18,1,4,'Hpnya bagus, pengiriman agak lama',2),
+(19,19,2,8,'Sangat cocok, warnanya juga bagus',5),
+(20,20,12,8,'Sangat cocok, pas di badan',5),
+(21,21,4,8,'Sepatu yang bagus, dan nyaman. Untuk kualitas ya sesuai hargalah',5),
+(22,22,6,7,'Pengiriman selamat sampai tujuan, packing rapi, dan berfungsi baik',4),
+(23,23,14,8,'Joss',4),
+(24,24,1,8,'Akhirnya bisa nyoba main genshin',4),
+(25,25,11,5,'Pas di pergelangan tangan',4);
 /*!40000 ALTER TABLE `rating` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -288,26 +298,21 @@ CREATE TABLE `transaksi` (
 LOCK TABLES `transaksi` WRITE;
 /*!40000 ALTER TABLE `transaksi` DISABLE KEYS */;
 INSERT INTO `transaksi` VALUES
-(1,1,'2023-05-01',1500000.00,1500000.00,1,1),
-(2,2,'2023-05-02',750000.00,750000.00,2,2),
-(3,3,'2023-05-03',900000.00,900000.00,1,3),
-(4,4,'2023-05-04',1600000.00,1600000.00,3,2),
-(5,5,'2023-05-05',500000.00,500000.00,4,4),
-(6,6,'2023-05-06',8000000.00,8000000.00,2,5),
-(7,7,'2023-05-07',600000.00,600000.00,3,1),
-(8,8,'2023-05-08',720000.00,720000.00,5,3),
-(9,1,'2023-05-09',400000.00,400000.00,4,2),
-(10,2,'2023-05-10',1000000.00,1000000.00,1,4),
-(11,3,'2023-05-11',450000.00,450000.00,3,5),
-(12,4,'2023-05-12',600000.00,600000.00,2,1),
-(13,5,'2023-05-13',350000.00,350000.00,5,4),
-(14,6,'2023-05-14',2500000.00,2500000.00,1,3),
-(15,7,'2023-05-15',300000.00,300000.00,4,2),
-(16,8,'2023-05-16',480000.00,480000.00,2,5),
-(17,1,'2023-05-17',600000.00,600000.00,3,1),
-(18,2,'2023-05-18',850000.00,850000.00,5,3),
-(19,3,'2023-05-19',700000.00,700000.00,4,2),
-(20,4,'2023-05-20',1200000.00,1200000.00,1,4);
+(1,2,'2023-04-29',10400000.00,10400000.00,1,1),
+(2,1,'2023-04-29',250000.00,250000.00,2,2),
+(3,3,'2023-04-30',390000.00,390000.00,1,3),
+(4,2,'2023-04-30',20400000.00,20400000.00,3,2),
+(5,5,'2023-04-30',11800000.00,11800000.00,4,4),
+(6,4,'2023-04-30',1015000.00,1015000.00,2,5),
+(7,6,'2023-05-01',300000.00,300000.00,3,1),
+(8,6,'2023-05-01',680000.00,680000.00,5,3),
+(9,7,'2023-05-01',5000000.00,5000000.00,4,2),
+(10,4,'2023-05-02',10000000.00,10000000.00,1,4),
+(11,8,'2023-05-02',1600000.00,1600000.00,3,5),
+(12,7,'2023-05-03',20000000.00,20000000.00,2,1),
+(13,8,'2023-05-04',5000000.00,5000000.00,5,4),
+(14,8,'2023-05-04',10000000.00,10000000.00,1,3),
+(15,5,'2023-05-04',400000.00,400000.00,4,2);
 /*!40000 ALTER TABLE `transaksi` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -356,4 +361,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-21  0:12:06
+-- Dump completed on 2023-05-21 20:32:22
