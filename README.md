@@ -5,7 +5,7 @@ Dalam folder ini, terdapat 2 file:
 1. tokopedia.sql
 2. tokopedia-insert-manual.txt
 
-Hanya bisa memilih satu file untuk digunakan. Berikut cara-caranya:
+Pilih satu file untuk digunakan. Berikut cara-caranya:
 
 ## Untuk File "tokopedia.sql"
 
