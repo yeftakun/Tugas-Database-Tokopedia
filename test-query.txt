@@ -1,0 +1,62 @@
+-- 1) Menampilkan semua daftar produk dengan kategori, serta penjualnya masing-masing dan diurutkan berdasarkan nama produk.
+
+select p.produk_id, p.nama_produk, k.jenis_ktg, u.user_name as "Nama Penjual"
+from produk as p
+join kategori as k on p.kategori_id = k.kategori_id
+join user as u on p.user_id = u.user_id
+order by p.nama_produk asc;
+
+-- 2) Menampilkan semua data produk yang dibeli oleh masing-masing pelanggan, beserta dengan harga dan jumlahnya. Diurutkan berdasarkan waktu transaksi.
+
+select t.transaksi_id, p.nama_produk, u.user_name as "Nama Pembeli", p.harga, dt.jumlah, t.tanggal as "Tanggal Dibeli"
+from user as u
+join transaksi as t on u.user_id = t.user_id
+join detail_transaksi as dt on t.transaksi_id = dt.transaksi_id
+join produk as p on dt.produk_id = p.produk_id
+order by t.tanggal asc, t.transaksi_id asc;
+
+-- 3) Melakukan query untuk total pengeluaran dari ‘Theodorus Lahea’ selama bertransaksi di Tokopedia.
+
+select u.user_name, SUM(t.total_harga) AS "Total Pengeluaran"
+from user as u
+join transaksi as t on u.user_id = t.user_id
+where u.user_name = 'Theodorus Lahea'
+group by u.user_name;
+
+-- 4) Menampilkan semua ulasan produk yang dibeli oleh pelanggan, menampilkan komentar dan poin dari ulasan tersebut. Diurutkan berdasarkan nama produk secara ascending.
+
+select t.transaksi_id, u.user_name as "Nama Pelanggan", p.nama_produk, r.komentar, r.poin
+from detail_transaksi as dt
+join transaksi as t on t.transaksi_id = dt.transaksi_id
+join user as u on u.user_id = t.user_id
+join produk as p on dt.produk_id = p.produk_id
+join rating as r on dt.detail_transaksi_id = r.detail_transaksi_id
+order by p.nama_produk asc;
+
+-- 5) Menampilkan ulasan hanya dari produk yang berkategori elektronik saja, serta komentar dan poin dari ulasan tersebut. Diurutkan berdasarkan nama produk secara ascending.
+
+select t.transaksi_id, u.user_name as "Nama Pelanggan", p.nama_produk, r.komentar, r.poin
+from detail_transaksi as dt
+join transaksi as t on t.transaksi_id = dt.transaksi_id
+join user as u on u.user_id = t.user_id
+join produk as p on dt.produk_id = p.produk_id
+join rating as r on dt.detail_transaksi_id = r.detail_transaksi_id
+join kategori as k on p.kategori_id = k.kategori_id
+where k.jenis_ktg = 'Elektronik'
+order by p.nama_produk asc;
+
+-- 6) Menampilkan rata-rata keseluruhan rating yang diberikan pelanggan untuk produk ‘Samsung Galaxy S21’.
+
+select avg(r.poin) as "Rating Samsung Galaxy S21"
+from rating as r
+join produk as p on r.produk_id = p.produk_id
+where p.nama_produk = 'Samsung Galaxy S21';
+
+-- 7) Menampilkan seluruh produk beserta rating dan jumlah terjualnya. Diurutkan berdasarkan rating, dari yang terbesar.
+
+select p.nama_produk, avg(r.poin) as "Rating", count(distinct dt.transaksi_id) as "Terjual"
+from produk as p
+left join detail_transaksi as dt on p.produk_id = dt.produk_id
+left join rating as r on dt.detail_transaksi_id = r.detail_transaksi_id
+group by p.produk_id, p.nama_produk
+order by r.poin desc;
