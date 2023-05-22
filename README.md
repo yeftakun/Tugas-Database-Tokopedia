@@ -21,3 +21,6 @@ Hanya bisa memilih satu file untuk digunakan. Berikut cara-caranya:
 2. Buka filenya, pilih semua (ctrl + A).
 3. Paste di MariaDB, terakhir ENTER.
 4. Selesai. Temukan file log di C:\
+
+## Test
+Salin file "test-query.txt"
