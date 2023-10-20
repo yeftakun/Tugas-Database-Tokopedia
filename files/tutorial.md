@@ -1,6 +1,8 @@
 # Tugas-Database-Tokopedia
 Tugas 3 - Implementasi Desain Basis Data
 
+[Back to Readme](../README.md)
+
 Dalam folder ini, terdapat 2 file:
 1. tokopedia.sql
 2. tokopedia-insert-manual.txt
