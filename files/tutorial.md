@@ -3,11 +3,11 @@ Tugas 3 - Implementasi Desain Basis Data
 
 [Back to Readme](../README.md)
 
-Dalam folder ini, terdapat 2 file:
+Dalam repo ini, terdapat 2 file:
 1. tokopedia.sql
 2. tokopedia-insert-manual.txt
 
-Pilih satu file untuk digunakan. Berikut cara-caranya:
+Pilih satu file untuk digunakan.
 
 ## Untuk File "tokopedia.sql"
 
