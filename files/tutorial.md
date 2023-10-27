@@ -1,7 +1,7 @@
 # Tugas-Database-Tokopedia
 Tugas 3 - Implementasi Desain Basis Data
 
-[Back to Readme](../README.md)
+[Back to Readme](../)
 
 Dalam repo ini, terdapat 2 file:
 1. tokopedia.sql
