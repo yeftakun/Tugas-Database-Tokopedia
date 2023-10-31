@@ -1,7 +1,7 @@
 # Tugas-Database-Tokopedia
 Tugas 3 - Implementasi Desain Basis Data
 
-[Back to Readme](../)
+[Back to Readme](https://github.com/yeftakun/Tugas-Database-Tokopedia)
 
 Dalam repo ini, terdapat 2 file:
 1. tokopedia.sql
